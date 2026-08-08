@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================ -->
+  <!-- CLIENT HINTS DELEGATION (for Bemob / go.usreward.store)      -->
+  <!-- ============================================================ -->
+  <meta http-equiv="delegate-ch" content="sec-ch-ua https://go.usreward.store; sec-ch-ua-mobile https://go.usreward.store; sec-ch-ua-arch https://go.usreward.store; sec-ch-ua-model https://go.usreward.store; sec-ch-ua-platform https://go.usreward.store; sec-ch-ua-platform-version https://go.usreward.store; sec-ch-ua-bitness https://go.usreward.store; sec-ch-ua-full-version-list https://go.usreward.store; sec-ch-ua-full-version https://go.usreward.store">
+
+  <!-- ============================================================ -->
+  <!-- META PIXEL (ID: 976084828803103)                             -->
+  <!-- ============================================================ -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '976084828803103');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=976084828803103&ev=PageView&noscript=1" />
+  </noscript>
+
+  <title>Share Your Opinion – Earn Rewards</title>
+
+  <style>
+    /* ── Reset ── */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f5f9fe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .fullscreen {
+      width: 100vw;
+      height: 100vh;
+      max-width: 100%;
+      max-height: 100%;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2.5rem 3rem;
+      box-shadow: none;
+      border-radius: 0;
+      position: relative;
+      overflow-y: auto;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      min-height: 80vh;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #eaf6ef;
+      color: #1a7a4a;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      border-radius: 100px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 8vw, 4.8rem);
+      font-weight: 800;
+      color: #0b1a2e;
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
+    }
+    h1 .highlight {
+      color: #2a9d8f;
+      display: inline-block;
+    }
+
+    .sub {
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: #3a4d62;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      max-width: 600px;
+    }
+    .sub strong {
+      color: #0b1a2e;
+    }
+
+    .proof-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem 2rem;
+      background: #f8faff;
+      border: 1px solid #e6edf4;
+      border-radius: 3rem;
+      padding: 0.7rem 2rem;
+      margin-bottom: 2.2rem;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: #1a2a3a;
+    }
+    .proof-item .stars {
+      color: #f4b740;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+    }
+    .proof-item .count {
+      font-weight: 700;
+      color: #0b1a2e;
+    }
+
+    .timer {
+      font-weight: 700;
+      color: #c44536;
+      background: #fef0ed;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .timer span {
+      font-size: 1.3rem;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.2rem;
+      width: 100%;
+      max-width: 700px;
+      margin-bottom: 2.2rem;
+    }
+
+    .benefit-item {
+      background: #f9fbfd;
+      border-radius: 1.5rem;
+      padding: 1.4rem 0.8rem;
+      text-align: center;
+      border: 1px solid transparent;
+      transition: 0.15s;
+    }
+    .benefit-item:hover {
+      border-color: #d0dfec;
+      background: #f4f8fe;
+    }
+    .benefit-item .icon {
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .benefit-item .title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #0b1a2e;
+    }
+    .benefit-item .desc {
+      font-size: 0.85rem;
+      color: #5a6f84;
+      margin-top: 0.2rem;
+      line-height: 1.3;
+    }
+
+    .cta-link {
+      display: inline-block;
+      width: 100%;
+      max-width: 500px;
+      background: #2a9d8f;
+      border: none;
+      padding: 1.3rem 1.5rem;
+      border-radius: 4rem;
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 12px 36px rgba(42, 157, 143, 0.4);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .cta-link:hover {
+      background: #23877b;
+      transform: scale(1.01);
+      box-shadow: 0 16px 44px rgba(42, 157, 143, 0.5);
+      color: #fff;
+      text-decoration: none;
+    }
+    .cta-link .arrow {
+      font-size: 1.8rem;
+      line-height: 1;
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+    .cta-link:hover .arrow {
+      transform: translateX(6px);
+    }
+
+    .disclosure {
+      font-size: 0.7rem;
+      color: #8a9db0;
+      margin-top: 0.8rem;
+      letter-spacing: 0.2px;
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem 1.8rem;
+      font-size: 0.75rem;
+      color: #8a9db0;
+      border-top: 1px solid #e9eff5;
+      padding-top: 1.5rem;
+    }
+    .footer a {
+      color: #4a6b8a;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+      color: #1a3a5a;
+    }
+
+    @media (max-width: 700px) {
+      .fullscreen {
+        padding: 1.8rem 1.2rem;
+        justify-content: center;
+      }
+      .content {
+        min-height: auto;
+      }
+      h1 {
+        font-size: clamp(2.2rem, 10vw, 3.2rem);
+      }
+      .benefits {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+        max-width: 400px;
+      }
+      .benefit-item {
+        padding: 0.9rem 0.6rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        text-align: left;
+      }
+      .benefit-item .icon {
+        font-size: 1.6rem;
+        margin-bottom: 0;
+      }
+      .benefit-item .title {
+        font-size: 0.95rem;
+      }
+      .benefit-item .desc {
+        font-size: 0.75rem;
+      }
+      .proof-row {
+        border-radius: 1.5rem;
+        padding: 0.7rem 1rem;
+        gap: 0.6rem;
+        flex-direction: column;
+      }
+      .cta-link {
+        font-size: 1.2rem;
+        padding: 1rem;
+      }
+      .footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.7rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .fullscreen {
+        padding: 1rem 0.8rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="fullscreen">
+  <div class="content">
+
+    <!-- Trust Badge -->
+    <div class="trust-badge">
+      🔒 SSL Encrypted &bull; 100% Private
+    </div>
+
+    <!-- Headline -->
+    <h1>
+      Your Opinion.<br />
+      <span class="highlight">$5 Gift Card.</span>
+    </h1>
+    <p class="sub">
+      <strong>Share your thoughts</strong> in social surveys and get rewarded instantly.
+    </p>
+
+    <!-- Proof Row: Stars + Timer -->
+    <div class="proof-row">
+      <div class="proof-item">
+        <span class="stars">★★★★★</span>
+        <span><span class="count">50,000+</span> members earned <strong>$200+</strong> this year</span>
+      </div>
+      <div class="proof-item timer" id="timerDisplay">
+        <span>⏱</span> <span id="timerText">01:17</span>
+      </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="benefits">
+      <div class="benefit-item">
+        <span class="icon">✅</span>
+        <div class="title">Free to Join</div>
+        <div class="desc">No fees, no hidden costs</div>
+      </div>
+      <div class="benefit-item">
+        <span class="icon">🎁</span>
+        <div class="title">Earn for Every Survey</div>
+        <div class="desc">Redeem for Amazon, PayPal &amp; more</div>
+      </div>
+      <div class="benefit-item">
+        <span class="icon">🛡️</span>
+        <div class="title">Your Data is Safe</div>
+        <div class="desc">We never sell or share your info</div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- CTA LINK – NEW DOI CAMPAIGN (go.usreward.store)              -->
+    <!-- ============================================================ -->
+    <a href="https://go.usreward.store/click/1?ns=c%3D39b64b47-9b66-4827-9d6b-bb90d8a344bd..l%3D2..a%3D0..b%3D0" id="ctaButton" class="cta-link">
+      Start Earning Rewards
+      <span class="arrow">→</span>
+    </a>
+
+    <div class="disclosure">
+      * Rewards vary by survey. Gift cards delivered upon completion.
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact Us</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPTS: Timer + Facebook Lead Event                         -->
+<!-- ============================================================ -->
+<script>
+  // ── Timer (starts at 1:17) ──
+  (function() {
+    let seconds = 77;
+    const timerEl = document.getElementById('timerText');
+    if (!timerEl) return;
+
+    function pad(n) {
+      return String(n).padStart(2, '0');
+    }
+
+    function updateDisplay() {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      timerEl.textContent = pad(mins) + ':' + pad(secs);
+    }
+
+    updateDisplay();
+
+    const interval = setInterval(function() {
+      if (seconds > 0) {
+        seconds--;
+        updateDisplay();
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
+  })();
+
+  // ── Facebook Lead Event on CTA Click ──
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('ctaButton');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'Lead', {
+            content_name: 'Survey Prelander',
+            currency: 'USD',
+            value: 5.00
+          });
+        }
+      });
+    }
+  });
+</script>
+
+<!-- ============================================================ -->
+<!-- BEMOB LANDING PAGE PIXEL (NEW DOI CAMPAIGN)                  -->
+<!-- ============================================================ -->
+<script type="text/javascript">
+function bemobCb(params) {
+    var t = params.trackingDomain+'/click/';
+    var re = new RegExp(t+'?(\\d*)');
+    var e = document.querySelectorAll('a[href*="'+t+'"]');
+    for (var i = 0; i < e.length; i++) {
+        var ex = re.exec(e[i].href);
+        if (ex) {
+            e[i].href = params.ctaSecureUrl.replace('%%OFFER_NUMBER%%', ex[1] || 1);
+        }
+    }
+}
+</script>
+<script type="text/javascript">!function(){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src="https://go.usreward.store/landing/39b64b47-9b66-4827-9d6b-bb90d8a344bd?callback=bemobCb&rule=1&path=1&landing=1&"+window.location.search.substring(1);var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)}();</script>
+<noscript><img src="https://go.usreward.store/landing/39b64b47-9b66-4827-9d6b-bb90d8a344bd?rule=1&path=1&landing=1" alt=""></noscript>
+
+</body>
+</html>
